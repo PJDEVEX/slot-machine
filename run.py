@@ -8,7 +8,7 @@ MAX_LINES = 3
 # Maximum and minimum amout player can bet on per line
 MAX_BET = 200
 MIN_BET = 1
-# Number of rows and coloumns of the slot machine
+# Number of rows and colomns of the slot machine
 ROWS = 3
 COLS = 3
 
@@ -21,11 +21,46 @@ symbols_count = {
     "k": 8
 }
 
+# Value for winning each of symbol
+symbol_value = {
+    "$": 5,
+    "£": 4,
+    "€": 3,
+    "k": 2
+}
+
+
+def check_winnings(columns, lines, bet, values):
+    """
+    deciding the winning of the bet
+    if bet on one line, it is on topline
+    if, on two lines, it is on top 2 lines
+    if, on three lines, it is on all lins
+    User cannot pick lines
+    """
+    winnings = 0
+    winning_lines = []
+    # check numbmer of lines
+    for line in range(lines):
+        symbol = columns[0][line]
+        for column in columns:
+            # Check the symbol of each column
+            symbol_to_check = column[line]
+            if symbol != symbol_to_check:
+                break
+        else:
+            # if all the symbol are the same, player wins
+            # Cal how much a player win
+            winnings += values[symbol] * bet
+            winning_lines.append(line + 1)
+
+    return winnings, winning_lines
+
 
 def slot_machine_spin(rows, cols, symbols):
     """
     Get slot machine to spin and randomly select
-    symbols for each row and coloumn
+    symbols for each row and colomn
     """
     # add all they symbols to a all symbol list
     all_symbols = []
@@ -33,7 +68,7 @@ def slot_machine_spin(rows, cols, symbols):
         for _ in range(symbol_count):
             all_symbols.append(symbol)
 
-    # Randonly adding the symbols to each coloumn
+    # Randonly adding the symbols to each colomn
     columns = []
     for _ in range(cols):
         column = []
@@ -46,6 +81,21 @@ def slot_machine_spin(rows, cols, symbols):
         columns.append(column)
 
     return columns
+
+
+def print_slot_machine(columns):
+    """
+    Transposing symbols generated in spiining slot machine colomns 
+    to rows and print them 
+    """
+    for row in range(len(columns[0])):
+        for i, column in enumerate(columns):
+            if i != len(columns) - 1:
+                print(column[row], end=" | ")
+            else:
+                print(column[row], end="")
+
+        print()
 
 
 def deposit():
@@ -119,6 +169,12 @@ def main():
     lines = get_number_of_lines()
     bet = get_bet()
     print(balance, lines, bet)
+
+    slots = slot_machine_spin(ROWS, COLS, symbols_count)
+    print_slot_machine(slots)
+    winnings, winning_lines = check_winnings(slots, lines, bet, symbol_value)
+    print(f"You won ${winnings}.")
+    print(f"You won on lines:", *winning_lines)
 
 
 main()
