@@ -1,4 +1,6 @@
 
+# import python inbuit random lib to generate random numbers 
+import random
 
 # Global constants
 # Maximum number of line in the slot game
@@ -6,6 +8,44 @@ MAX_LINES = 3
 # Maximum and minimum amout player can bet on per line
 MAX_BET = 200
 MIN_BET = 1
+# Number of rows and coloumns of the slot machine
+ROWS = 3
+COLS = 3
+
+
+# Symbols of the slot machine and their freaqancy
+symbols_count = {
+    "$": 2,
+    "£": 4,
+    "€": 6,
+    "k": 8
+}
+
+
+def slot_machine_spin(rows, cols, symbols):
+    """
+    Get slot machine to spin and randomly select
+    symbols for each row and coloumn
+    """
+    # add all they symbols to a all symbol list
+    all_symbols = []
+    for symbol, symbol_count in symbols.items():
+        for _ in range(symbol_count):
+            all_symbols.append(symbol)
+
+    # Randonly adding the symbols to each coloumn
+    columns = []
+    for _ in range(cols):
+        column = []
+        current_symbols = all_symbols[:]
+        for _ in range(rows):
+            value = random.choice(current_symbols)
+            current_symbols.remove(value)
+            column.append(value)
+
+        columns.append(column)
+
+    return columns
 
 
 def deposit():
