@@ -161,20 +161,49 @@ def get_bet():
     return amount
 
 
-def main():
+def spin(balance):
     """
-    Execute all the function of the programe
+    Repeating the algoritum of the application 
+    as long as player would like to continue
     """
-    balance = deposit()
     lines = get_number_of_lines()
-    bet = get_bet()
-    print(balance, lines, bet)
+    while True:
+        bet = get_bet()
+        total_bet = bet * lines
+
+        if total_bet > balance:
+            print(
+                f"You do not have enough to bet that amount, your current balance is: ${balance}")
+        else:
+            break
+
+    print(
+        f"You are betting ${bet} on {lines} lines. Total bet is equal to: ${total_bet}")
 
     slots = slot_machine_spin(ROWS, COLS, symbols_count)
     print_slot_machine(slots)
     winnings, winning_lines = check_winnings(slots, lines, bet, symbol_value)
     print(f"You won ${winnings}.")
     print(f"You won on lines:", *winning_lines)
+    return winnings - total_bet
+
+
+def main():
+    """
+    Execute,
+    1. deposit function
+    2. check for the continuation of the game
+    3. continue the game as player wishes to do so
+    """
+    balance = deposit()
+    while True:
+        print(f"Current balance is ${balance}")
+        answer = input("Press enter to play (q to quit).")
+        if answer == "q":
+            break
+        balance += spin(balance)
+
+    print(f"You left with ${balance}")
 
 
 main()
