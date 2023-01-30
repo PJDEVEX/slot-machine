@@ -148,7 +148,7 @@ def get_bet():
     Getting bets from the player per line
     """
     while True:
-        amount = input("What would you like to bet on each line? $ ")
+        amount = input("How much you would like to bet on each line? $ \n")
         if amount.isdigit():
             amount = int(amount)
             if MIN_BET <= amount <= MAX_BET:
@@ -168,9 +168,12 @@ def spin(balance):
     """
     lines = get_number_of_lines()
     while True:
+        # call for the get bet fuction
         bet = get_bet()
+        # callculate the total bet for the attempt
         total_bet = bet * lines
 
+        # Check the sufficiancy of the available balance to contiune the game
         if total_bet > balance:
             print(
                 f"You do not have enough to bet that amount, your current balance is: ${balance}")
@@ -178,7 +181,7 @@ def spin(balance):
             break
 
     print(
-        f"You are betting ${bet} on {lines} lines. Total bet is equal to: ${total_bet}")
+        f"You are betting ${bet} on {lines} lines. Total bet is equal to: ${total_bet}\n")
 
     slots = slot_machine_spin(ROWS, COLS, symbols_count)
     print_slot_machine(slots)
@@ -195,15 +198,20 @@ def main():
     2. check for the continuation of the game
     3. continue the game as player wishes to do so
     """
+    # call for deposit function
     balance = deposit()
     while True:
+        # Confirm the current blance
         print(f"Current balance is ${balance}")
-        answer = input("Press enter to play (q to quit).")
+        # letting the player decide on continuation of the game
+        answer = input("Press enter to play (q to quit).\n")
         if answer == "q":
+            print("Thanks for playing the game!")
             break
+        # Indicating the balance as quit
         balance += spin(balance)
 
-    print(f"You left with ${balance}")
+    print(f'Please collect your balance ${balance}.\n')
 
 
 main()
