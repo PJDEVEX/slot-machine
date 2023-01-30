@@ -108,7 +108,7 @@ def deposit():
     3. The value entered is a digit.
     """
     while True:
-        amount = input("What would you like to deposit? $ ")
+        amount = input("What would you like to deposit? $ \n")
         if amount.isdigit():
             amount = int(amount)
             if amount > 0:
@@ -130,7 +130,7 @@ def get_number_of_lines():
     """
     while True:
         lines = input(
-            f'Pleae enter the number of lines to bet on ("1-{MAX_LINES}") ? ')
+            f'Pleae enter the number of lines to bet on ("1-{MAX_LINES}") ? \n')
         if lines.isdigit():
             lines = int(lines)
             if 1 <= lines <= MAX_LINES:
