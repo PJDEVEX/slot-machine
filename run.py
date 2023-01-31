@@ -108,7 +108,7 @@ def deposit():
     3. The value entered is a digit.
     """
     while True:
-        amount = input("What would you like to deposit? $ \n")
+        amount = input("What amount would you like to deposit? $ \n")
         if amount.isdigit():
             amount = int(amount)
             if amount > 0:
