@@ -130,7 +130,7 @@ def get_number_of_lines():
     """
     while True:
         lines = input(
-            f'Pleae enter the number of lines to bet on ("1-{MAX_LINES}") ? \n')
+            f'Pleae enter the no. of lines to bet on ("1-{MAX_LINES}") ? \n')
         if lines.isdigit():
             lines = int(lines)
             if 1 <= lines <= MAX_LINES:
@@ -175,17 +175,17 @@ def spin(balance):
 
         # Check the sufficiancy of the available balance to contiune the game
         if total_bet > balance:
-            print(f"You do not have enough to bet that amount, your current balance is: ${balance}")
+            print(f"Balance is not enogh, your current balance is: ${balance}")
         else:
             break
 
-    print(f"You are betting ${bet} on {lines} lines. Total bet is: ${total_bet}\n")
+    print(f"Betting ${bet} on {lines} lines. Total bet is: ${total_bet}\n")
 
     slots = slot_machine_spin(ROWS, COLS, symbols_count)
     print_slot_machine(slots)
     winnings, winning_lines = check_winnings(slots, lines, bet, symbol_value)
     print(f"You won ${winnings}.")
-    print(f"You won on lines:", *winning_lines)
+    print(f"You won on lines: {winning_lines}")
     return winnings - total_bet
 
 
