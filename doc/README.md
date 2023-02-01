@@ -154,10 +154,14 @@ Note: Function performs as expeted
 
 ### Validator Testing
 
-[pythonchecker.com](https://www.pythonchecker.com/) was used for validating the code.  
+[pep8-online](https://pep8ci.herokuapp.com/) and [pythonchecker.com](https://www.pythonchecker.com/) was used for validating the code.  
+
+![pep8 online](/images/pep8-online.png)
+![pythonchecker](/images/code-validation.png)
+
 Receive 68% (Good) 
 
-![pep8 online](/images/code-validation.png)
+
 
 ## Deployment
 

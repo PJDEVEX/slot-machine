@@ -1,5 +1,4 @@
-
-# import python inbuit random lib to generate random numbers 
+# import python inbuit random lib to generate random numbers
 import random
 
 # Global constants
@@ -85,8 +84,8 @@ def slot_machine_spin(rows, cols, symbols):
 
 def print_slot_machine(columns):
     """
-    Transposing symbols generated in spiining slot machine colomns 
-    to rows and print them 
+    Transposing symbols generated in spiining slot machine colomns
+    to rows and print them
     """
     for row in range(len(columns[0])):
         for i, column in enumerate(columns):
@@ -163,7 +162,7 @@ def get_bet():
 
 def spin(balance):
     """
-    Repeating the algoritum of the application 
+    Repeating the algoritum of the application
     as long as player would like to continue
     """
     lines = get_number_of_lines()
