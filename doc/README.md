@@ -197,9 +197,9 @@ Some helpful tutorials I used to help me with coding some of the design ideas we
 
 **Documentation used**
 
-https://www.w3schools.com/
+* https://www.w3schools.com/
 
-![Python Tutorial - Python Full Course for Beginners](https://www.youtube.com/watch?v=_uQrJ0TkZlc&t=21423s)
+* [Python Tutorial - Python Full Course for Beginners](https://www.youtube.com/watch?v=_uQrJ0TkZlc&t=21423s)
 
 
 ## Acknowledgements
