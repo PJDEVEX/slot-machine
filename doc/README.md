@@ -65,13 +65,13 @@ A flow control was used to visualize the whole process of the app.
 
 * This also allowed the design of the user input validation checks to be visually clear before the code was written.
 
-![Flowchart](/workspace/slot-machine/images/processchart.png)
+![Flowchart](/images/processchart.png)
 
 **Wireframes**
 
 Wireframes were drawn to have the basic idea of what needs to be build.
 
-![User Interface](/workspace/slot-machine/images/wireframe.jpg)
+![User Interface](/images/wireframe.jpg)
 
 
 **Future Developments**
@@ -106,35 +106,45 @@ Wireframes were drawn to have the basic idea of what needs to be build.
 ## Testing
 *   Methods such as print() as the code developed was used to check for errors.  This helped check that everything was behaving as expected.
 
-*   Errors or warnings were fixed as they appeared such as indentation errors, lines too long or extra space issues.  This helped keep the code clean and readable so other errors or bugs that arose were identified more easily.
+### Manual Progresive Testing of Functions ###
+
+* Get Deposit
+![get-deposit](/images/deposit.png)
+Note: Function performs as expeted
+
+* Get the number of lines
+
+![get-the number of lines to bet on](/images/get-no-of-lines.png)
+Note: Function performs as expeted
+
+* Get bet
+
+![get-bet-per-line](/images/get-bet.png)
+Note: Function performs as expeted
+
+* Slot machine spin
+
+![slot-machine-spin](/images/slot-machine-spin.png)
+Note: Function performs as expeted
+
+* Check winnings
+
+![check-winnigs](/images/check-winnings.png)
+Note: Function performs as expeted
+
+* Spin function and revised main
+
+![Spin-function-and-revised-main](/images/revised-main.png)
+Note: Function performs as expeted
+
+
+*   Errors or warnings were fixed as they appeared such as indentation errors, extra space issues.  It helped keep the code clean and readable so other errors or bugs that arose were identified more easily.
 
 *   After deployment all features were checked on Chrome, Firefox, Brave and Edge.
 
 *   The app was deployed early on in development and checked regularly to ensure app working corectly and any errors were handled early on.
 
 *   Testing inputs were used to ensure user inputs would be handled correctly and appropriate feedback to the user was shown on screen.  As mentioned above in the Features Section for how user inputs were handled.
-
-    *   Welcome screen:
-    This will accept any input before the enter key is pressed, but makes no use of any input apart from the enter key which calls the main menu function.
-
-    *   App Navigation:
-    To test, keys from 1 to 4 from Main menu and 0 to 4 from sub-menus were pressed resulting in navigation to that specific page. Any other input results in `Invalid choice !!!` error message being displayed.
-
-    *   Percent change:
-    To test that is calculated correctly the entire dataframe for the specific period was printed to the terminal and then manually calculating the percent change using Windows calculator.
-
-    *   Find by ticker:
-    
-           To test the input and return of this function steps were as follow:
-           - Numbers 0 to 4 were inputted - resulting in Navigation to that specific page -> works as intended.
-           - Negative and bigger than 4 numbers were inputted - results in `Invalid choice !!!` error message -> works as intended.
-           - Up to 5 letters being inputted and ticker found - displays ticker info -> works as intended.
-           - Up to 5 letters being inputted and ticker not found -  results in `Ticker info not found !!!` error message -> works as intended.
-           - Non alphanumeric being inputted - results in `You need to input Alphanumeric characters !!!` error message -> works as intended.
-           - More than 5 letters being inputted - results in `Ticker should be up to 5 letters !!!` error message -> works as intended.
-           - A catch all error clause for unpredictable user inputs was added to prevent the app crashing from *inventive* users:
-           
-           ![Catch all](documentation/features/all.jpg)
            
  
 ### Bugs Found
@@ -144,19 +154,14 @@ Wireframes were drawn to have the basic idea of what needs to be build.
 
 ### Validator Testing
 
-[pep8 online](http://pep8online.com/) was used for validating the python files.  All python files were checked with no errors reported.
+[pythonchecker.com](https://www.pythonchecker.com/) was used for validating the code.  
+Receive 68% (Good) 
 
-![pep8 online](documentation/testing/pep8_run.jpg)
-![pep8 online](documentation/testing/pep8_constants.jpg)
-![pep8 online](documentation/testing/pep8_crawler.jpg)
-![pep8 online](documentation/testing/pep8_functions.jpg)
-
-
-
+![pep8 online](/images/code-validation.png)
 
 ## Deployment
 
-The site was deployed via [Heroku]( https://id.heroku.com/login), and the live link can be found here: [Finance App](https://etf-finance-app.herokuapp.com/) 
+The site was deployed via [Heroku]( https://id.heroku.com/login), and the live link can be found here: [Slot-machine-pj](https://slot-machine-pj.herokuapp.com/) 
 
 This project was developed utilizing the [Code Institute Template]( https://github.com/Code-Institute-Org/python-essentials-template).  Some of the deployment steps below are specifically required for the new CI template and may not be applicable to older versions, or different projects.
 
@@ -195,11 +200,6 @@ Some helpful tutorials I used to help me with coding some of the design ideas we
 https://www.w3schools.com/
 
 ![Python Tutorial - Python Full Course for Beginners](https://www.youtube.com/watch?v=_uQrJ0TkZlc&t=21423s)
-
-
-
-**Code example and fixes**
-
 
 
 ## Acknowledgements
