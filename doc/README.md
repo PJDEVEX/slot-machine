@@ -43,110 +43,65 @@ The app stimulates a gambling enviroment that user can enjoy
 
 ## Features
 
-
-
-
-### Future Development & Features Left to Implement
-
-* This is only proof of concept version of this app.
-* In future versions I plan to implement different options including:
-
-    - Get financial instruments from a more reliable data source, ex: [Nasdaq Data Link]( https://data.nasdaq.com/)  
-    - Ability to get data and group by different sectors, sub sectors.
-    - Ability to select custom time interval for performance.
-    - Ability to display data , ex: using [Matplotlib]( https://matplotlib.org/)( see section wireframes)
-    - Ability for alerts when a specific condition on a specific list of instruments is met.
-    - Ability to have the alerts sent to user via different methods, ex: Email, Telegram, Discord.
+* User can deposit money
+* Validating the data entered when depositing money
+* Confirms the balance
+* Gets confirmation to proceed or quit
+* Allows user to enter number of lines to be bet on
+* Validating the data entered on betting
+* Allows user to enter amount to be bet on per line
+* Validating the data entered for number of lines
+* Returns with slot results, amount won/ lost, and line won
+* Gives a confirmation on available balance
 
 
 ### Data Model Design
 
 **Use Case Diagram and Flow Control**
 
-A combination of Flow Control and Unified Modelling Language (UML) was used to visualize the various features and control flow statements of the app.
+A flow control was used to visualize the whole process of the app.
 
-* The Diagram was drafted to capture the app's functionality and relationships with the user.
-
-* The relationship with the User starts at Welcome screen. All 6 screens of the app are represented by orange squares. The relation between screens are represented by arrows with numbers which represent navigation options. 
-* The Diagram shows the order in which individual instructions were executed and the result that followed.
+* The Diagram was drafted to capture the app's functionality and the user interaction.
 
 * This also allowed the design of the user input validation checks to be visually clear before the code was written.
 
-![Use Case Diagram](documentation/wireframes/diagram.png)
+![Flowchart](/workspace/slot-machine/images/processchart.png)
 
 **Wireframes**
 
 Wireframes were drawn to have the basic idea of what needs to be build.
 
-![Main](documentation/wireframes/main.jpg)
-![ETF](documentation/wireframes/etf.jpg)
+![User Interface](/workspace/slot-machine/images/wireframe.jpg)
 
-**Future Development Wireframes**
 
-As discussed in Future Development section above, this is a potential development in the future.
+**Future Developments**
 
-![Future](documentation/wireframes/future.jpg)
+* Major developments to be identified
 
 **Classes and functions**
 
-* During the development in order to minimize redundant code I decided to group various if statements into functions and then into a class called *Crawler*. The class diagram below shows what class does.
-The class and its associated methods are stored in separate file to allow for separating the code into parts that hold related data and functionality.  
- 
-* List with tickers and ETFs were extracted to external file called *constants*.   
-* Some functions were also moved to an eternal file called *functions* to make the code more modular.
-* This will allow any future expansion and development of this project to have a clear structure and also for any code re-use and sharing as well as maintenance.
+* All the functions are given description on each of their functionality
+* Functions are grup for execution as a main function
+* Separate function was created for iteration of related when running the program
 
 
-
-![Class Diagram](documentation/code/class.jpg)
-
-**Colour**
-
-To change the text color [Termcolor](https://pypi.org/project/termcolor/) was imported.  
-
-A mix of red and green was used to keep the app intuitive give feedback to the Users. 
 
 ## Libraries & Technology Used
 
 **Python Libraries**
-* pip 
+* random 
 
     pip install was used to install Python Libraries via terminal using the command `pip install 'package name'` to install packages in gitpod.
     
     The command `pip3 freeze > requirements.txt` was used to install dependencies for proper deployment on heroku. 
-* os
 
-    The os library was imported to create a function to utilize the os.system to clear the terminal.  This supports a positive user experience and making the screen clearer and more structured.
-    
-* time and datetime 
+* random
 
-    Time and Datetime was used for calculating the time periods and in animation function.
-    
-* tabulate
+    Python inbuit random library was used to generate random unmbers and their functionality 
 
-    Was used to display the data in a table format.
-    
-* Yahoo Finance (yfinance)
-
-    yfinance was used to get the data for financial instruments from Yahoo Finance website
-    
-* pandas 
-    
-    pandas dataframe was used to manipulate the data.
-    
-* numpy 
-
-    numpy was used for adding the percent (%) sign to the calculated data before displaying.
-    
-* art
-    
-    was used to generate ASCII art for the title of the app.
 
 * [LucidCharts](https://www.lucidchart.com/) was used to create the UML Case Diagram and the Flowchart.
 
-* [Draw.io](https://www.Draw.io) to draw Class Diagram.
-
-* Snagit to convert, edit, crop and save images screen recordings.
 
 ## Testing
 *   Methods such as print() as the code developed was used to check for errors.  This helped check that everything was behaving as expected.
@@ -181,68 +136,11 @@ A mix of red and green was used to keep the app intuitive give feedback to the U
            
            ![Catch all](documentation/features/all.jpg)
            
-  
  
 ### Bugs Found
 
-**1.  Fetch error:**
-
-During development, incorrectly specifying the date resulted in getting False values in the dataframe.
-
-![Fetch error](documentation/errors/fetch_error.jpg)
-
-It was solved by looking at [examples](https://towardsdatascience.com/financial-data-from-yahoo-finance-with-python-b5399743bcc6) on how to query `yfinance` to get the data for specific time period.
-
-
-
-
-**2.  Index error**
-
-During code refactoring a duplication/addition of table indexes occurred when navigating between pages:
-
-![Index error](documentation/errors/index_error.jpg)
-
-It was fixed by adding `.copy()` at the end of the line. 
-
-![Index error](documentation/errors/index_error_fix.jpg)
-
-
-
-**3. Transpose error**
-
-*  During development while trying to add the 2nd and 3rd list of ETFs run into a key error:  
-
-
-![Transpose error](documentation/errors/transpose_error.jpg)
-![Transpose error](documentation/errors/transpose_error_code.jpg)
-
-was fixed by building a separate function for it:
-
-     def __init__(self, tickers, ticker_names):
-            """
-            Check and formats the data
-            """
-            self.tickers = tickers if isinstance(
-                tickers, (list, set, tuple)) else tickers.replace(',', ' ').split()
-            self.ticker_names = ticker_names
-
-
-![Transpose error](documentation/errors/transpose_error_fix.jpg)
-
-**4. Period error**
-
-Since the app was developed during the weekdays an unpredictable error occurred while using the app in the weekend.
-Good that error handling message pinpointed where is the problem: `Something bad happened while processing data!`, it was in the class Crawler.
-Financial markets are closed during weekend, hence there is no data. While refactoring `today = date.today()` was used to calculate previous period. It works for all periods except for the previous day. Therefore the code to calculate previous day was reverted to the version before refactor in order to work properly.  
-In the the future code may be refactored to handle this exception but for time being it is working as intended.
-
-![Period error](documentation/errors/period_error.jpg)
-![Period error](documentation/errors/period_error_code.jpg)
-
-And this is the fix:
-
-![Period error](documentation/errors/period_error_fix.jpg)
-
+* No major bugs identified during the deplyment 
+* Almost all of the bugs have been fixed during the development stage as and when they were identified
 
 ### Validator Testing
 
@@ -266,8 +164,8 @@ Before deploying to Heroku pip3 freeze > requirements.txt was used to install de
 
 1.	Log in to [Heroku]( https://id.heroku.com/login) or create an account if required.
 2.	Then, click the button labeled **New** from the dashboard in the top right corner and from the drop-down menu select **Create New App**.
-3.	You must enter a unique app name, (I used etf-finance-app).
-4.	Next, select your region, (I chose Europe as I am in Ireland).
+3.	You must enter a unique app name, (slot-machine-pj).
+4.	Next, select your region, (I chose Europe as I am in Sweden).
 5.	Click on the **Create App** button.
 6.	The next page you will see is the project’s Deploy Tab.  Click on the **Settings Tab** and scroll down to **Config Vars**.
 7.	Click **Reveal Config Vars** and enter **port** into the **Key** box and **8000** into the **Value** box and click the **Add** button.
@@ -288,59 +186,19 @@ o	**Note:** The Buildpacks must be in the correct order. If not click and drag t
 ### Version Control
 *   Git was used as the version control software. Commands such as git add ., git status, git commit and git push were used to add, save, stage and push the code to the GitHub repository where the source code is stored.
 
-* [GitKraken](https://www.gitkraken.com/) was also used for git version control when working locally from my PC.
-
 ## Credits
 
 Some helpful tutorials I used to help me with coding some of the design ideas were:
 
 **Documentation used**
 
-https://pypi.org/project/yfinance/
+https://www.w3schools.com/
 
-https://pypi.org/project/termcolor/
+![Python Tutorial - Python Full Course for Beginners](https://www.youtube.com/watch?v=_uQrJ0TkZlc&t=21423s)
 
-https://pandas.pydata.org/docs/getting_started/index.html
 
-https://numpy.org/install/
-
-https://pypi.org/project/art/
 
 **Code example and fixes**
-
-https://blog.quantinsti.com/stock-market-data-analysis-python/
-
-https://towardsdatascience.com/financial-data-from-yahoo-finance-with-python-b5399743bcc6
-
-https://stackoverflow.com/questions/42739327/iloc-giving-indexerror-single-positional-indexer-is-out-of-bounds
-
-https://pandas.pydata.org/pandas-docs/stable/user_guide/timeseries.html#offset-aliases
-
-https://pandas.pydata.org/pandas-docs/version/0.23.3/generated/pandas.DataFrame.pct_change.html
-
-https://snyk.io/advisor/python/yfinance/example
-
-https://stackoverflow.com/questions/62123237/python-pandas-data-not-aligned-correctly
-
-https://marqueegroup.ca/resource/how-to-use-python-in-a-finance-environment/
-
-https://discuss.python.org/t/creating-an-application-to-pull-stock-data-from-yfinance/9605
-
-https://www.tutorialgateway.org/python-program-to-check-character-is-alphabet-or-digit/
-
-https://www.w3schools.com/python/python_dictionaries_access.asp
-
-https://stackoverflow.com/questions/29767310/pythons-lambda-with-underscore-for-an-argument
-
-https://stackoverflow.com/questions/983354/how-to-make-a-python-script-wait-for-a-pressed-key
-	
-
-
-**Animation**
-
-  
-  Animation inspired from [stackoverflow](https://stackoverflow.com/questions/22029562/)
-
 
 
 

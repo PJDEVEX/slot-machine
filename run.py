@@ -175,13 +175,11 @@ def spin(balance):
 
         # Check the sufficiancy of the available balance to contiune the game
         if total_bet > balance:
-            print(
-                f"You do not have enough to bet that amount, your current balance is: ${balance}")
+            print(f"You do not have enough to bet that amount, your current balance is: ${balance}")
         else:
             break
 
-    print(
-        f"You are betting ${bet} on {lines} lines. Total bet is equal to: ${total_bet}\n")
+    print(f"You are betting ${bet} on {lines} lines. Total bet is: ${total_bet}\n")
 
     slots = slot_machine_spin(ROWS, COLS, symbols_count)
     print_slot_machine(slots)
